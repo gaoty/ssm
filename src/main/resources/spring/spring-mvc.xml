@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="configuration,com.gaoty.ssm"/>
+
+    <mvc:resources mapping="/statics/**" location="/statics/"/>
+    <mvc:default-servlet-handler/>
+
+    <!--<mvc:annotation-driven>-->
+        <!--<mvc:argument-resolvers>-->
+            <!--<bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver">-->
+                <!--<property name="oneIndexedParameters" value="true"/>-->
+                <!--<property name="pageParameterName" value="pageNo"/>-->
+                <!--<property name="sizeParameterName" value="pageSize"/>-->
+            <!--</bean>-->
+        <!--</mvc:argument-resolvers>-->
+        <!--<mvc:message-converters>-->
+            <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+                <!--<property name="supportedMediaTypes">-->
+                    <!--<list>-->
+                        <!--<value>text/plain;charset=UTF-8</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</mvc:message-converters>-->
+    <!--</mvc:annotation-driven>-->
+
+    <aop:aspectj-autoproxy/>
+
+    <!--
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.greenline.mtc.interceptor.MvcInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    -->
+
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/templates/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="number_format">#</prop>
+                <prop key="template_update_delay">0</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="auto_import">/macro/macros.ftl as ops</prop>
+                <prop key="url_escaping_charset">UTF-8</prop>
+                <prop key="defaultEncoding">UTF-8</prop>
+                <prop key="boolean_format">true,false</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="locale">zh_CN</prop>
+            </props>
+        </property>
+    </bean>
+
+    <import resource="dubbo-client.xml"/>
+    <import resource="uc.hessian.client.xml"/>
+    <import resource="mtc-hession.xml" />
+</beans>
