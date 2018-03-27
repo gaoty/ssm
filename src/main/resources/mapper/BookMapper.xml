@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gaoty.ssm.mapper.BookMapper">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
-    <select id="queryById" resultType="Book" parameterType="long">
+    <select id="queryById" resultType="com.gaoty.ssm.manager.book.dataobject.BookDO" parameterType="long">
         <!-- 具体的sql -->
         SELECT
         book_id,
@@ -16,7 +16,7 @@
         book_id = #{id}
     </select>
 
-    <select id="queryAll" resultType="Book">
+    <select id="queryAll" resultType="com.gaoty.ssm.manager.book.dataobject.BookDO">
         SELECT
         book_id,
         name,

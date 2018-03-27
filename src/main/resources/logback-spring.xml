@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration debug="true">
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <springProperty scope="context" name="logging.root" source="logging.root" defaultValue="D:\data\logs\ssm"/>
+    <springProperty scope="context" name="logging.level" source="logging.level" defaultValue="${LOG_LEVEL}"/>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <Target>System.out</Target>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%t] %-5p |-%c{35}:%L - %m %n</pattern>
         </encoder>
     </appender>
-    <root level="debug">
+    <appender name="ASYNCConsole" class="ch.qos.logback.classic.AsyncAppender">
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="stdout"/>
+    </appender>
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

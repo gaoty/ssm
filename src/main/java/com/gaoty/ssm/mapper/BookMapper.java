@@ -1,8 +1,8 @@
 package com.gaoty.ssm.mapper;
 
+import com.gaoty.ssm.manager.book.dataobject.BookDO;
 import org.apache.ibatis.annotations.Param;
 
-import java.awt.print.Book;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public interface BookMapper {
      * @param id
      * @return
      */
-    Book queryById(long id);
+    BookDO queryById(long id);
 
     /**
      * 查询所有图书
@@ -28,7 +28,7 @@ public interface BookMapper {
      * @param limit 查询条数
      * @return
      */
-    List<Book> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+    List<BookDO> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
     /**
      * 减少馆藏数量

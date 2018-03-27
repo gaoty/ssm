@@ -9,7 +9,7 @@
         VALUES (#{bookId}, #{studentId})
     </insert>
 
-    <select id="queryByKeyWithBook" resultType="Appointment">
+    <select id="queryByKeyWithBook" resultType="com.gaoty.ssm.manager.book.dataobject.AppointmentDO">
         <!-- 如何告诉MyBatis把结果映射到Appointment同时映射book属性 -->
         <!-- 可以自由控制SQL -->
         SELECT
