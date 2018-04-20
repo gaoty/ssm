@@ -1,0 +1,3 @@
+<div>
+${bookDo.name}
+</div>
